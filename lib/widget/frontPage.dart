@@ -7,6 +7,27 @@ class FrontPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.amber,
+        selectedItemColor: const Color.fromARGB(255, 67, 70, 71),
+        unselectedItemColor: Colors.white,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.grid_view),
+            label: 'Category',
+          ),
+
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      ),
       backgroundColor: Colors.grey.shade100,
 
       body: Column(
