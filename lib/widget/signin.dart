@@ -1,12 +1,9 @@
-import 'package:blinkit_clone/widget/frontPage.dart';
-import 'package:blinkit_clone/widget/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
-  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,16 +15,15 @@ class LoginPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const SizedBox(height: 80),
+              const SizedBox(height: 50),
 
               // Logo
-              const Icon(Icons.shopping_bag, size: 80, color: Colors.green),
+              const Icon(Icons.person_add_alt_1, size: 80, color: Colors.green),
 
               const SizedBox(height: 20),
 
-              // Welcome Text
               Text(
-                "Welcome Back!",
+                "Create Account",
                 style: GoogleFonts.poppins(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -37,29 +33,58 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 8),
 
               Text(
-                "Login to continue shopping",
+                "Sign up to start shopping",
                 style: GoogleFonts.poppins(fontSize: 16, color: Colors.grey),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 35),
 
-              // Email / Phone
+              // Full Name
               TextField(
                 decoration: InputDecoration(
-                  hintText: "Email or Phone",
+                  hintText: "Full Name",
                   prefixIcon: const Icon(Icons.person),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // Email
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: "Email",
+                  prefixIcon: const Icon(Icons.email),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
+
+              // Phone
+              TextField(
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                  hintText: "Phone Number",
+                  prefixIcon: const Icon(Icons.phone),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
 
               // Password
               TextField(
@@ -73,25 +98,29 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // Confirm Password
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: "Confirm Password",
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  suffixIcon: const Icon(Icons.visibility_off),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 30),
 
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text("Forgot Password?", style: GoogleFonts.poppins()),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              // Login Button
+              // Signup Button
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -103,14 +132,9 @@ class LoginPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => FrontPage()),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
-                    "Login",
+                    "Create Account",
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -124,16 +148,16 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?", style: GoogleFonts.poppins()),
+                  Text(
+                    "Already have an account?",
+                    style: GoogleFonts.poppins(),
+                  ),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignupPage()),
-                      );
+                      Navigator.pop(context);
                     },
                     child: Text(
-                      "Sign Up",
+                      "Login",
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                     ),
                   ),
