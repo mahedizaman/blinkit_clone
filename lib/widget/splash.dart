@@ -12,13 +12,22 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  bool startAnimation = false;
+  @override
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 4), () {
+
+    Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        startAnimation = true;
+      });
+    });
+
+    Timer(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
     });
   }
@@ -31,34 +40,44 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text.rich(
-              TextSpan(
-                children: [
+            AnimatedOpacity(
+              opacity: startAnimation ? 1 : 0,
+              duration: const Duration(seconds: 2),
+              child: AnimatedScale(
+                scale: startAnimation ? 1 : 0.4,
+                duration: const Duration(seconds: 2),
+                curve: Curves.easeOutBack,
+                child: Text.rich(
                   TextSpan(
-                    text: 'blink',
-                    style: GoogleFonts.poppins(
-                      color: Colors.black,
-                      fontSize: 52,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    children: [
+                      TextSpan(
+                        text: 'blink',
+                        style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontSize: 52,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'it',
+                        style: GoogleFonts.poppins(
+                          color: Colors.green,
+                          fontSize: 52,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextSpan(
+                        text: '\nBD Last Minute App',
+                        style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
-                  TextSpan(
-                    text: 'it',
-                    style: GoogleFonts.poppins(
-                      color: Colors.green,
-                      fontSize: 52,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: '\nBD Last Minute App',
-                    style: GoogleFonts.poppins(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight(500),
-                    ),
-                  ),
-                ],
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ],

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: ' Blinkit Clone',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: Center(child: SplashPage())),
+      home: const SplashPage(),
     );
   }
 }

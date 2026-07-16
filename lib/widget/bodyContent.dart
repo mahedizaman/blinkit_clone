@@ -35,9 +35,21 @@ class _BodyContentPageState extends State<BodyContentPage> {
     return ListView.builder(
       itemCount: 100,
       itemBuilder: (context, index) {
-        return ExpansionTile(
-          title: Text(photos[index]['title']),
-          children: [Text(photos[index]['thumbnailUrl'])],
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: ExpansionTile(
+            title: Text(photos[index]['title']),
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(25),
+                child: Image.network(
+                  photos[index]['thumbnailUrl'],
+                  width: 150,
+                  height: 150,
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
