@@ -1,17 +1,31 @@
+import 'package:blinkit_clone/widget/bodyContent.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FrontPage extends StatelessWidget {
+class FrontPage extends StatefulWidget {
   const FrontPage({super.key});
 
+  @override
+  State<FrontPage> createState() => _FrontPageState();
+}
+
+class _FrontPageState extends State<FrontPage> {
+  int isSelected = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: isSelected,
+        onTap: (index) {
+          setState(() {
+            isSelected = index;
+          });
+        },
         backgroundColor: Colors.amber,
         selectedItemColor: const Color.fromARGB(255, 67, 70, 71),
         unselectedItemColor: Colors.white,
+
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
 
@@ -119,14 +133,7 @@ class FrontPage extends StatelessWidget {
             ),
           ),
 
-          Expanded(
-            child: Center(
-              child: Text(
-                "Body Content",
-                style: GoogleFonts.poppins(fontSize: 22),
-              ),
-            ),
-          ),
+          Expanded(child: Center(child: BodyContentPage())),
         ],
       ),
     );
